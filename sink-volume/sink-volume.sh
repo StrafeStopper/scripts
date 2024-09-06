@@ -23,7 +23,7 @@ function getSink()
 {
 	sinks=$(pactl list sink-inputs)
 	sinkbinaryindex=$(awk -v sinks="$sinks" -v app="$SINK_APP" 'BEGIN {print index(sinks,app)}'  )
-	sink=$(echo "${sinks:0:$sinkbinaryindex}" | tr "\n" "[racecar]" | rev | tr "[racecar]" "\n" | grep -m 1 "tupnI" | tr -d "#" | awk '{print $1}' | rev )
+	sink=$(echo "${sinks:0:$sinkbinaryindex}" | rev | grep -m 1 "tupnI" | tr -d "#" | awk '{print $1}' | rev )
 	echo "$cutatapprev"
 }
 
